@@ -1,11 +1,13 @@
-import Cast from "./Cast";
-import Reviews from "./Reviews";
+import Header from "components/containers/Header";
+import Cast from "../containers/Cast";
+import Reviews from "../containers/Reviews";
 
 export default function Movies() {
 
     return (
         <div>
-            <h2></h2>
+            <Header />
+            <h2>The movie name</h2>
             <p>User score: </p>
 
             <p>Additional information</p>
@@ -15,5 +17,4 @@ export default function Movies() {
             </ul>
         </div>
     )
-
 }
