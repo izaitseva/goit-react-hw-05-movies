@@ -1,9 +1,12 @@
+import { paths } from "components/paths/paths";
+import { Link } from "react-router-dom";
+
 export default function Header() {
 
     return (
-        <div>
-            <h2>Home</h2>
-            <h2>Movies</h2>
-        </div>
+        <header className="Header">
+            <Link to={paths.home}>Home</Link>
+            <Link to={paths.movies}>Movies</Link>
+        </header>
     )
 }
