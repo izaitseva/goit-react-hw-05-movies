@@ -2,7 +2,7 @@ import { fetchTopRatedMovies } from "components/API/moviesAPI"
 import Header from "components/containers/Header"
 import { paths } from "components/paths/paths";
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom";
+import { generatePath, Link } from "react-router-dom";
 
 export default function Home() {
     const [movies, setMovies] = useState([]);
@@ -22,7 +22,7 @@ export default function Home() {
             <ul>
                 {movies.map(movie => (
                     <li key={movie.id}>
-                        <Link to={paths.movies}>{movie.title ?? movie.original_title}</Link>
+                        <Link to={generatePath(paths.movie, { movieId: movie.id })}>{movie.title ?? movie.original_title}</Link>
                     </li>
                 ))}
             </ul>
