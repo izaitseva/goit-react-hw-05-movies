@@ -1,12 +1,12 @@
 import { paths } from "components/paths/paths";
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import { HeaderNav } from "./Header/HeaderNav";
 
 const Movie = () => {
 
     return (
         <div>
-            <Header />
+            <HeaderNav />
             <h2>movie title</h2>
             <p>User score: </p>
             <p>Additional information</p>

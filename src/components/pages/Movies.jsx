@@ -1,4 +1,4 @@
-import Header from "components/containers/Header";
+import { HeaderNav } from "components/containers/Header/HeaderNav";
 import { paths } from "components/paths/paths";
 import { Link } from "react-router-dom";
 
@@ -6,7 +6,7 @@ export default function Movies() {
 
     return (
         <div>
-            <Header />
+            <HeaderNav />
 
             if() {
                 <div>
