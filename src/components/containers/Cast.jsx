@@ -21,7 +21,10 @@ export default function Cast() {
                 {
                     cast?.map(x => (
                         <li key={x.id}>
-                            <img src={imageUrl(x.profile_path)} alt="actor's pic" width={90} />
+                            {x.profile_path
+                                ? <img src={imageUrl(x.profile_path)} alt="actor's pic" width={90} />
+                                : <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/No_picture_available.png/401px-No_picture_available.png" alt="no pic" width={90}/>
+                            }
                             <h4>{x.name}</h4>
                             <p>Character: {x.character}</p>
                         </li>
