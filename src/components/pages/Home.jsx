@@ -1,5 +1,4 @@
 import { fetchTopRatedMovies } from "components/API/moviesAPI"
-import { HeaderNav } from "components/containers/Header/HeaderNav"
 import { paths } from "components/paths/paths";
 import { useEffect, useState } from "react"
 import { generatePath, Link } from "react-router-dom";
@@ -17,7 +16,6 @@ export default function Home() {
 
     return (
         <div>
-            <HeaderNav />
             <h2>Trending Today</h2>
             <ul>
                 {movies.map(movie => (
