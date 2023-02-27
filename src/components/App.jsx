@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import Cast from "./containers/Cast";
 import Reviews from "./containers/Reviews";
+import Movie from "./containers/Movie";
 
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
       <Route path={paths.movies} element={<Movies />} />
       <Route path={paths.cast} element={<Cast />} />
       <Route path={paths.reviews} element={<Reviews />} />
+      <Route path={paths.movie} element={<Movie />}/>
       <Route path="*" element={"Page is not found"}/>
     </Routes>
   );

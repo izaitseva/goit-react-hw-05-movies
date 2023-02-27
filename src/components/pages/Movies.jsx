@@ -8,16 +8,24 @@ export default function Movies() {
         <div>
             <Header />
 
-            <input placeholder="Let's find a movie for you"></input>
-            <button>Search</button>
-            <h2>The movie name</h2>
-            <p>User score: </p>
+            if() {
+                <div>
+                    <h2>The movie name</h2>
+                    <p>User score: </p>
 
-            <p>Additional information</p>
-            <ul>
-                <Link to={paths.cast}>Cast</Link>
-                <Link to={paths.reviews}>Reviews</Link>
-            </ul>
+                    <p>Additional information</p>
+                    <ul>
+                        <Link to={paths.cast}>Cast</Link>
+                        <Link to={paths.reviews}>Reviews</Link>
+                    </ul>
+                </div>
+            } then {
+                <div>
+                    <input placeholder="Let's find a movie for you"></input>
+                    <button>Search</button>
+                </div>
+            }
+
         </div>
     )
 }

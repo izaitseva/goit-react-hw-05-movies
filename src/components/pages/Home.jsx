@@ -11,6 +11,7 @@ export default function Home() {
         fetchTopRatedMovies()
             .then(({ data }) => {
                 setMovies(data.results)
+                console.log(data.results);
             })
     }, []);
 
@@ -21,7 +22,7 @@ export default function Home() {
             <ul>
                 {movies.map(movie => (
                     <li key={movie.id}>
-                        <Link to={paths.movies}>{movie.title}</Link>
+                        <Link to={paths.movies}>{movie.title ?? movie.original_title}</Link>
                     </li>
                 ))}
             </ul>
