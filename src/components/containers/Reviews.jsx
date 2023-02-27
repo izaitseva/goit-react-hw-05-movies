@@ -20,7 +20,7 @@ const Reviews = () => {
             })
     }, [movieId]);
 
-    if (status === 'error') {
+    if (status === 'error' || review.length === 0) {
         return <p>There are no reviews.</p>
     }
 
