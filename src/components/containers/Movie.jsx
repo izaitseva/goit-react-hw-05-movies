@@ -32,7 +32,7 @@ const Movie = () => {
     }
     if (status === 'error') {
         return <div>There was an error. Please return
-            <Link to={paths.home}>HOME</Link>
+            <Link to={paths.home}> HOME</Link>
         </div>
     }
 
@@ -55,10 +55,10 @@ const Movie = () => {
 
             <div>
                 <p>Additional information</p>
-                <ul>
+                <div>
                     <Link to={paths.cast}>Cast</Link>
                     <Link to={paths.reviews}>Reviews</Link>
-                </ul>
+                </div>
             </div>
             <Outlet />
         </div>

@@ -1,10 +1,43 @@
-export default function Reviews() {
+import { getMovieReviews } from "components/API/moviesAPI";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+const Reviews = () => {
+
+    const params = useParams();
+    const { movieId } = params;
+    const [review, setReview] = useState([]);
+    const [status, setStatus] = useState('idle');
+
+    useEffect(() => {
+
+        getMovieReviews(movieId)
+            .then(({ data: { results } }) => {
+                setReview(results)
+            })
+            .catch((error) => {
+                setStatus('error')
+            })
+    }, [movieId]);
+
+    if (status === 'error') {
+        return <p>There are no reviews.</p>
+    }
 
     return (
-            <li>
-                <p>Author: </p>
-                <p>Paragraph</p>
-            </li>
+        <ul>
+            {
+                review?.map(x => (
+                    <li key={x.id}>
+                        <h4>Author: {x?.author_details.username} </h4>
+                        <p>{x?.content}</p>
+                    </li>
+
+                ))
+            }
+        </ul>
     )
 
 }
+
+export default Reviews;
