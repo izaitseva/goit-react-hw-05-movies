@@ -1,12 +1,12 @@
 import { paths } from "components/paths/paths";
 import { NavLink } from "react-router-dom";
-import styles from './HeaderNav.module.css';
+import "./HeaderNav.css";
 
 export const HeaderNav = ({ isDesktop = true }) => {
 
     return (
         <nav>
-            <header className={styles.NavList}>
+            <header className="HeaderNav">
                 <NavLink to={paths.home} style={({ isActive }) => {
                     if (isActive) return { color: 'orange' }
                 }}>
