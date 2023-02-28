@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import Cast from "./containers/Cast";
 import Reviews from "./containers/Reviews";
-import Movie from "./containers/MoviePage";
+import Movie from "./containers/Movie";
 import { Main } from "./pages/Main";
 
 export default function App() {
