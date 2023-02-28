@@ -44,7 +44,10 @@ const Movie = () => {
         <div>
             <Link to={paths.home}>Go back</Link>
             <div>
-                <img src={img} alt="" width={350}/>
+                {movie.poster_path
+                    ? <img src={img} alt="actor's pic" width={350} />
+                    : <img src="https://rb.gy/ycrvka" alt="no pic" width={350} />
+                }
                 <h2> {movie?.title + date} </h2>
                 <p>User rating: {vote}</p>
                 <h4>Overview</h4>
