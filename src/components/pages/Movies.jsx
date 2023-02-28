@@ -37,6 +37,7 @@ export default function Movies() {
                     display: "flex",
                     gap: " 20px",
                     flexWrap: "wrap",
+                    justifyContent: "center",
                 }}>
                     {
                         searchResults.map(movie => {
@@ -48,8 +49,8 @@ export default function Movies() {
                                 <li key={movie?.id}
                                     style={{
                                         listStyle: "none",
-                                        backgroundColor: "#e2e2e2",
-                                        width: "300px",
+                                        backgroundColor: "#f7f4f4",
+                                        width: "400px",
                                         border: "solid black 1px",
                                         borderRadius: "6px",
                                     }}>
@@ -62,12 +63,17 @@ export default function Movies() {
                                                 width: "100%"
                                             }} />
                                         }
-                                        <h2> {movie?.title + date} </h2>
-                                        <p>User rating: {movie?.vote_average.toFixed(1)}</p>
-                                        <h4>Overview</h4>
-                                        <p>{movie?.overview}</p>
-                                        {/* <h4>Genres</h4>
+                                        <div style={{
+                                            marginLeft: "15px",
+                                            marginRight: "15px"
+                                        }}>
+                                            <h2> {movie?.title + date} </h2>
+                                            <p>User rating: {movie?.vote_average.toFixed(1)}</p>
+                                            <h4>Overview</h4>
+                                            <p>{movie?.overview}</p>
+                                            {/* <h4>Genres</h4>
                                         <p>{movie?.genre_ids.map(x => x.name).join(', ')}</p> */}
+                                        </div>
                                     </div>
                                 </li>
                             )
