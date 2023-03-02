@@ -57,7 +57,9 @@ export default function Movies() {
                                     <div>
                                         {movie.poster_path
                                             ? <img src={img} alt="poster" style={{
-                                                width: "100%"
+                                                width: "100%",
+                                                minHeight: "599px"
+
                                             }} />
                                             : <img src="https://rb.gy/ycrvka" alt="no pic" style={{
                                                 width: "100%"
