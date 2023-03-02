@@ -7,14 +7,10 @@ export const HeaderNav = ({ isDesktop = true }) => {
     return (
         <nav>
             <header className="HeaderNav">
-                <NavLink to={paths.home} style={({ isActive }) => {
-                    if (isActive) return { color: 'orange' }
-                }}>
+                <NavLink to={paths.home}>
                     Home
                 </NavLink>
-                <NavLink to={paths.movies} style={({ isActive }) => {
-                    if (isActive) return { color: 'orange' }
-                }}>
+                <NavLink to={paths.movies}>
                     Movies
                 </NavLink>
             </header>
