@@ -3,7 +3,7 @@ import { paths } from "components/paths/paths";
 import { useEffect, useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 
-const Movie = () => {
+const MovieDetails = () => {
 
     const params = useParams();
     const { movieId } = params;
@@ -68,4 +68,4 @@ const Movie = () => {
     )
 }
 
-export default Movie;
+export default MovieDetails;

@@ -20,7 +20,7 @@ export default function Home() {
             <ul>
                 {movies.map(movie => (
                     <li key={movie.id}>
-                        <Link to={generatePath(paths.movie, { movieId: movie.id })}>{movie.title ?? movie.original_title}</Link>
+                        <Link to={generatePath(paths.movieDetails, { movieId: movie.id })}>{movie.title ?? movie.original_title}</Link>
                     </li>
                 ))}
             </ul>

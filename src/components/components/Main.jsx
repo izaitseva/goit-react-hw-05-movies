@@ -1,5 +1,5 @@
-import { HeaderNav } from "components/containers/Header/HeaderNav";
 import { Outlet } from "react-router-dom";
+import { HeaderNav } from "./Header/HeaderNav";
 
 export const Main = () => {
 

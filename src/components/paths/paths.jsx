@@ -1,7 +1,8 @@
 export const paths = {
+    // main: 'home', 
     home: '/',
     movies: 'movies',
-    movie: 'movies/:movieId',
+    movieDetails: 'movies/:movieId',
     
     cast:'cast',
     reviews: 'reviews',
