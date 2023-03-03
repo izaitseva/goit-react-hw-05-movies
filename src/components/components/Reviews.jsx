@@ -15,7 +15,7 @@ const Reviews = () => {
             .then(({ data: { results } }) => {
                 setReview(results)
             })
-            .catch((error) => {
+            .catch(() => {
                 setStatus('error')
             })
     }, [movieId]);

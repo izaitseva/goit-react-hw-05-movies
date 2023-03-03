@@ -15,17 +15,17 @@ export default function Movies() {
 
     const handleChangeSearch = e => {
         const newSearchValue = e.target.value.toLowerCase();
-        setQuery({ query: newSearchValue });
+        setQuery(newSearchValue);
     }
 
-    const handleSearch = () => {
+    const handleSubmit = () => {
 
-        if (link.trim() === '') {
+        if (query.trim() === '') {
             return;
         }
+        setMovieSearch({ query });
     }
 
-    setMovieSearch({ query });
 
     useEffect(() => {
         fetchSearchMovies(link)
@@ -45,8 +45,8 @@ export default function Movies() {
             <div>
                 {error && <NotFound />}
                 <form action="URL">
-                    <input placeholder="Let's find a movie for you" onChange={handleChangeSearch} value={link}></input>
-                    <button type="button" onClick={handleSearch}>Search</button>
+                    <input placeholder="Let's find a movie for you" onChange={handleChangeSearch} value={query}></input>
+                    <button type="button" onClick={handleSubmit}>Search</button>
                 </form>
                 <ul>
                     {
