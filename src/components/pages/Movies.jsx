@@ -6,18 +6,20 @@ export default function Movies() {
 
     const [movieSearch, setMovieSearch] = useSearchParams({ query:"" });
     const [searchResults, setSearchResults] = useState([]);
+    
     const link = movieSearch.get("query");
 
     const handleChangeSearch = e => {
         const newSearchValue = e.target.value.toLowerCase();
         setMovieSearch({ query:newSearchValue });
     }
-
+    
     const handleSearch = () => {
-
+        
         if (link.trim() === '') {
             return;
         }
+        
 
         fetchSearchMovies(link)
             .then(res => {
