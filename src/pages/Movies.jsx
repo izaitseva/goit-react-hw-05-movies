@@ -1,4 +1,5 @@
 import { fetchSearchMovies } from "components/API/moviesAPI";
+import { NotFound } from "components/components/NotFound";
 import { paths } from "components/paths/paths";
 import { useEffect, useState } from "react"
 import { generatePath, Link, useSearchParams } from "react-router-dom";
@@ -8,6 +9,7 @@ export default function Movies() {
     const [movieSearch, setMovieSearch] = useSearchParams({ query: "" });
     const [searchResults, setSearchResults] = useState([]);
     const [query, setQuery] = useState("");
+    const [error, setError] = useState(false);
 
     const link = movieSearch.get("query");
 
@@ -33,14 +35,15 @@ export default function Movies() {
                 console.log(movies);
                 setSearchResults(movies);
             })
-            .catch(error => {
-                console.log(error);
-            })
+            .catch(() => {
+                setError(true);
+            });
     }, [link])
 
     return (
         <div>
             <div>
+                {error && <NotFound />}
                 <form action="URL">
                     <input placeholder="Let's find a movie for you" onChange={handleChangeSearch} value={link}></input>
                     <button type="button" onClick={handleSearch}>Search</button>
