@@ -1,22 +1,25 @@
 import { fetchSearchMovies, imageUrl } from "components/API/moviesAPI";
 import { useState } from "react"
+import { useSearchParams } from "react-router-dom";
 
 export default function Movies() {
 
-    const [movieSearch, setMovieSearch] = useState('');
+    const [movieSearch, setMovieSearch] = useSearchParams({ query:"" });
     const [searchResults, setSearchResults] = useState([]);
+    const link = movieSearch.get("query");
 
     const handleChangeSearch = e => {
-        setMovieSearch(e.target.value.toLowerCase());
+        const newSearchValue = e.target.value.toLowerCase();
+        setMovieSearch({ query:newSearchValue });
     }
 
     const handleSearch = () => {
 
-        if (movieSearch.trim() === '') {
+        if (link.trim() === '') {
             return;
         }
 
-        fetchSearchMovies(movieSearch)
+        fetchSearchMovies(link)
             .then(res => {
                 const movies = res.data.results;
 
@@ -31,7 +34,7 @@ export default function Movies() {
     return (
         <div>
             <div>
-                <input placeholder="Let's find a movie for you" onChange={handleChangeSearch} value={movieSearch}></input>
+                <input placeholder="Let's find a movie for you" onChange={handleChangeSearch} value={link}></input>
                 <button type="button" onClick={handleSearch}>Search</button>
                 <ul style={{
                     display: "flex",
@@ -73,8 +76,6 @@ export default function Movies() {
                                             <p>User rating: {movie?.vote_average.toFixed(1)}</p>
                                             <h4>Overview</h4>
                                             <p>{movie?.overview}</p>
-                                            {/* <h4>Genres</h4>
-                                        <p>{movie?.genre_ids.map(x => x.name).join(', ')}</p> */}
                                         </div>
                                     </div>
                                 </li>
