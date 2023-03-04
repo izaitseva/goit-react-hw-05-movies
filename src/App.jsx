@@ -8,8 +8,8 @@ const Main = lazy(() => import("components/components/Main"));
 const Movies = lazy(() => import("pages/Movies"));
 const Cast = lazy(() => import("components/components/Cast"));
 const Reviews = lazy(() => import("components/components/Reviews"));
-const MovieDetails = lazy(() => import("components/components/MovieDetails"));
-const NotFound = lazy(() => import("components/components/NotFound"));
+const MovieDetails = lazy(() => import("pages/MovieDetails"));
+const NotFound = lazy(() => import("pages/NotFound"));
 
 export default function App() {
 
