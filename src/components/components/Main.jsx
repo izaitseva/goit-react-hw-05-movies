@@ -1,12 +1,16 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { HeaderNav } from "./Header/HeaderNav";
-
-export const Main = () => {
+const Main = () => {
 
     return (
         <>
             <HeaderNav />
-            <Outlet />
+            <Suspense fallback={<p>Loading Page</p>}>
+                <Outlet />
+            </Suspense>
         </>
     )
 }
+
+export default Main;

@@ -1,5 +1,5 @@
 import { fetchSearchMovies } from "components/API/moviesAPI";
-import { NotFound } from "components/components/NotFound";
+import NotFound from "components/components/NotFound";
 import { paths } from "components/paths/paths";
 import { useEffect, useState } from "react"
 import { generatePath, Link, useSearchParams } from "react-router-dom";
