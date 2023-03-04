@@ -18,7 +18,8 @@ export default function Movies() {
         setQuery(newSearchValue);
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
         if (query.trim() === '') {
             return;
@@ -44,9 +45,9 @@ export default function Movies() {
         <div>
             <div>
                 {error && <NotFound />}
-                <form action="URL">
+                <form onSubmit={handleSubmit}>
                     <input placeholder="Let's find a movie for you" onChange={handleChangeSearch} value={query}></input>
-                    <button type="button" onClick={handleSubmit}>Search</button>
+                    <button type="submit">Search</button>
                 </form>
                 <ul>
                     {

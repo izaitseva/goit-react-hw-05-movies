@@ -1,7 +1,7 @@
 import { fetchMovieById, imageUrl } from "components/API/moviesAPI";
 import { paths } from "components/paths/paths";
 import { Suspense, useEffect, useState } from "react";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 
 const MovieDetails = () => {
 
@@ -10,7 +10,8 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [status, setStatus] = useState('idle');
-    const location = useLocation();
+    // const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         setIsLoading(true);
@@ -44,7 +45,8 @@ const MovieDetails = () => {
 
     return (
         <div>
-            <Link to={paths.home} state={{ from: location }}>Go back</Link>
+
+            <Link onClick={() => navigate(-1)}>Go back</Link>
             <div>
                 {movie.poster_path
                     ? <img src={img} alt="actor's pic" width={350} />
