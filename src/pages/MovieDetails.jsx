@@ -1,4 +1,4 @@
-import { fetchMovieById, imageUrl } from "components/API/moviesAPI";
+import { fetchMovieById, imageUrl } from "moviesAPI";
 import { paths } from "components/paths/paths";
 import { Suspense, useEffect, useState } from "react";
 import { Link, Outlet, useNavigate, useParams } from "react-router-dom";

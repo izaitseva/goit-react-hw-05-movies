@@ -1,4 +1,4 @@
-import { fetchSearchMovies } from "components/API/moviesAPI";
+import { fetchSearchMovies } from "moviesAPI";
 import NotFound from "./NotFound";
 import { paths } from "components/paths/paths";
 import { useEffect, useState } from "react"

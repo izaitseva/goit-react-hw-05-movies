@@ -1,3 +1,4 @@
+import { paths } from "components/paths/paths";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +7,7 @@ export default function NotFound() {
 
     useEffect(() => {
         setTimeout(() => {
-            navigate("/")
+            navigate(paths.home)
         }, 1750);
     })
 

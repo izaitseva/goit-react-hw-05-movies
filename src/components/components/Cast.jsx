@@ -1,4 +1,5 @@
-import { getCast, imageUrl } from "components/API/moviesAPI"
+import { getCast, imageUrl } from "moviesAPI";
+
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 

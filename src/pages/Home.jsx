@@ -1,4 +1,4 @@
-import { fetchTopRatedMovies } from "components/API/moviesAPI"
+import { fetchTopRatedMovies } from "moviesAPI";
 import NotFound from "./NotFound";
 import { paths } from "components/paths/paths";
 import { useEffect, useState } from "react"
@@ -7,20 +7,31 @@ import { generatePath, Link } from "react-router-dom";
 export default function Home() {
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        fetchTopRatedMovies()
-            .then(({ data }) => {
+
+        const fetchMovie = async () => {
+
+            try {
+                setLoading(true);
+                const { data } = await fetchTopRatedMovies();
                 setMovies(data.results)
-            })
-            .catch(() => {
+            } catch {
                 setError(true)
-            })
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchMovie();
+
     }, []);
 
     return (
         <div>
             {error && <NotFound />}
+            {loading && <p>Please wait...</p>}
             <h2>Trending Today</h2>
             <ul>
                 {movies.map(movie => (
@@ -31,5 +42,4 @@ export default function Home() {
             </ul>
         </div>
     )
-
 }
