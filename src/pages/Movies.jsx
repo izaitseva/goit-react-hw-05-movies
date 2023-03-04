@@ -33,7 +33,6 @@ export default function Movies() {
             .then(res => {
                 const movies = res.data.results;
 
-                console.log(movies);
                 setSearchResults(movies);
             })
             .catch(() => {
