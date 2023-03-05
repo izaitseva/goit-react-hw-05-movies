@@ -13,7 +13,7 @@ export default function Cast() {
     useEffect(() => {
         getCast(movieId)
             .then(({ data: { cast } }) => {
-                setCast(cast)
+                setCast(cast) 
             })
             .catch(() => {
                 setError(true)

@@ -1,7 +1,7 @@
 import { fetchMovieById, imageUrl } from "moviesAPI";
 import { paths } from "components/paths/paths";
 import { Suspense, useEffect, useState } from "react";
-import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 
 const MovieDetails = () => {
 
@@ -10,8 +10,11 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [status, setStatus] = useState('idle');
-    // const location = useLocation();
+    const location = useLocation();
     const navigate = useNavigate();
+
+    const linkBack = location?.state?.from ?? paths.home;
+    const handleClick = () => navigate(linkBack);
 
     useEffect(() => {
         setIsLoading(true);
@@ -46,7 +49,7 @@ const MovieDetails = () => {
     return (
         <div>
 
-            <Link onClick={() => navigate(-1)}>Go back</Link>
+            <button onClick={handleClick}>Go back</button>
             <div>
                 {movie.poster_path
                     ? <img src={img} alt="actor's pic" width={350} />
@@ -63,8 +66,8 @@ const MovieDetails = () => {
             <div>
                 <p>Additional information</p>
                 <div>
-                    <Link to={paths.cast}>Cast</Link>
-                    <Link to={paths.reviews}>Reviews</Link>
+                    <Link to={paths.cast} state={{from: linkBack}}>Cast</Link>
+                    <Link to={paths.reviews} state={{from: linkBack}}>Reviews</Link>
                 </div>
             </div>
             <Suspense fallback={<p>Loading Page</p>}>

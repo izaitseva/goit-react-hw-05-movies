@@ -2,12 +2,13 @@ import { fetchTopRatedMovies } from "moviesAPI";
 import NotFound from "./NotFound";
 import { paths } from "components/paths/paths";
 import { useEffect, useState } from "react"
-import { generatePath, Link } from "react-router-dom";
+import { generatePath, Link, useLocation } from "react-router-dom";
 
 export default function Home() {
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
 
@@ -36,7 +37,7 @@ export default function Home() {
             <ul>
                 {movies.map(movie => (
                     <li key={movie.id}>
-                        <Link to={generatePath(paths.movieDetails, { movieId: movie.id })}>{movie.title ?? movie.original_title}</Link>
+                        <Link to={generatePath(paths.movieDetails, { movieId: movie.id })} state={{ from: location }}>{movie.title ?? movie.original_title}</Link>
                     </li>
                 ))}
             </ul>

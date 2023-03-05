@@ -1,8 +1,8 @@
+import { generatePath, Link, useLocation, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react"
 import { fetchSearchMovies } from "moviesAPI";
 import NotFound from "./NotFound";
 import { paths } from "components/paths/paths";
-import { useEffect, useState } from "react"
-import { generatePath, Link, useSearchParams } from "react-router-dom";
 
 export default function Movies() {
 
@@ -10,6 +10,7 @@ export default function Movies() {
     const [searchResults, setSearchResults] = useState([]);
     const [query, setQuery] = useState("");
     const [error, setError] = useState(false);
+    const location = useLocation();
 
     const link = movieSearch.get("query");
 
@@ -54,7 +55,7 @@ export default function Movies() {
 
                             return (
                                 <li key={movie.id}>
-                                    <Link to={generatePath(paths.movieDetails, { movieId: movie.id })}>{movie.title ?? movie.original_title}</Link>
+                                    <Link to={generatePath(paths.movieDetails, { movieId: movie.id })} state={{ from: location }}>{movie.title ?? movie.original_title}</Link>
                                 </li>
                             )
                         })
