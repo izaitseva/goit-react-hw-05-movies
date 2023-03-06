@@ -1,16 +1,17 @@
-import { generatePath, Link, useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { fetchSearchMovies } from "moviesAPI";
 import NotFound from "./NotFound";
-import { paths } from "components/paths/paths";
+import MovieList from "components/components/MovieList";
 
 export default function Movies() {
 
     const [movieSearch, setMovieSearch] = useSearchParams({ query: "" });
-    const [searchResults, setSearchResults] = useState([]);
+    // const [searchResults, setSearchResults] = useState([]);
     const [query, setQuery] = useState("");
     const [error, setError] = useState(false);
-    const location = useLocation();
+    const [loading, setLoading] = useState(false);
+    const [movies, setMovies] = useState([]);
 
     const link = movieSearch.get("query");
 
@@ -28,39 +29,32 @@ export default function Movies() {
         setMovieSearch({ query });
     }
 
-
     useEffect(() => {
-        fetchSearchMovies(link)
-            .then(res => {
-                const movies = res.data.results;
-
-                setSearchResults(movies);
-            })
-            .catch(() => {
+        const getSearchMovies = async () => {
+            try {
+                setLoading(true);
+                const { data } = await fetchSearchMovies(link);
+                setMovies(data.results);
+ 
+            } catch {
                 setError(true);
-            });
+            } finally {
+                setLoading(false);
+            }
+        }
+        getSearchMovies()
     }, [link])
 
     return (
         <div>
             <div>
                 {error && <NotFound />}
+                {loading && <h2>Please wait...</h2>}
                 <form onSubmit={handleSubmit}>
                     <input placeholder="Let's find a movie for you" onChange={handleChangeSearch} value={query}></input>
                     <button type="submit">Search</button>
                 </form>
-                <ul>
-                    {
-                        searchResults.map(movie => {
-
-                            return (
-                                <li key={movie.id}>
-                                    <Link to={generatePath(paths.movieDetails, { movieId: movie.id })} state={{ from: location }}>{movie.title ?? movie.original_title}</Link>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
+                {movies && <MovieList movies={movies} />}
             </div>
         </div>
     )

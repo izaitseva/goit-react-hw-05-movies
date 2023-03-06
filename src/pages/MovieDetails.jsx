@@ -8,9 +8,7 @@ const MovieDetails = () => {
     const params = useParams();
     const { movieId } = params;
     const [movie, setMovie] = useState(null);
-
     const [loading, setLoading] = useState(false);
-
     const [error, setError] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -39,6 +37,10 @@ const MovieDetails = () => {
     const date = ` (${movie?.release_date.split('-')[0]})`;
     const vote = movie?.vote_average.toFixed(1);
     const img = imageUrl(movie?.poster_path);
+
+    if (loading) {
+        return <>Loading...</>;
+    }    
 
     return (
         <div>

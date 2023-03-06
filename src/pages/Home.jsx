@@ -1,14 +1,15 @@
 import { fetchTopRatedMovies } from "moviesAPI";
 import NotFound from "./NotFound";
-import { paths } from "components/paths/paths";
 import { useEffect, useState } from "react"
-import { generatePath, Link, useLocation } from "react-router-dom";
+import MovieList from "components/components/MovieList";
+import { useParams } from "react-router-dom";
 
 export default function Home() {
-    const [movies, setMovies] = useState([]);
+
+    const [movies, setMovies] = useState(null);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
-    const location = useLocation();
+    const { movieId } = useParams();
 
     useEffect(() => {
 
@@ -18,6 +19,7 @@ export default function Home() {
                 setLoading(true);
                 const { data } = await fetchTopRatedMovies();
                 setMovies(data.results)
+
             } catch {
                 setError(true)
             } finally {
@@ -27,20 +29,14 @@ export default function Home() {
 
         fetchMovie();
 
-    }, []);
+    }, [movieId]);
 
     return (
         <div>
             {error && <NotFound />}
             {loading && <p>Please wait...</p>}
             <h2>Trending Today</h2>
-            <ul>
-                {movies.map(movie => (
-                    <li key={movie.id}>
-                        <Link to={generatePath(paths.movieDetails, { movieId: movie.id })} state={{ from: location }}>{movie.title ?? movie.original_title}</Link>
-                    </li>
-                ))}
-            </ul>
+            {movies && <MovieList movies={movies} />}
         </div>
     )
 }
