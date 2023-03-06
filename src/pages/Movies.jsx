@@ -1,4 +1,4 @@
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { fetchSearchMovies } from "moviesAPI";
 import NotFound from "./NotFound";
