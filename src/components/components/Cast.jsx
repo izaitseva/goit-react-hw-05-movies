@@ -21,7 +21,6 @@ export default function Cast() {
             } finally {
                 setLoading(false);
             }
-
         }
         fetchCast()
     }, [movieId])

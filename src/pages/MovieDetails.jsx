@@ -28,8 +28,6 @@ const MovieDetails = () => {
             } finally {
                 setLoading(false);
             }
-
-
         };
         getMovie();
     }, [movieId]);

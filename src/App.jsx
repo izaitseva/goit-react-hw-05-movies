@@ -16,7 +16,7 @@ export default function App() {
   return (
     <Routes>
       <Route path={paths.main} element={<Main />}>
-        <Route path={paths.home} element={<Home />} />
+        <Route index element={<Home />} />
         <Route path={paths.movies} element={<Movies />} />
 
         <Route path={paths.movieDetails} element={<MovieDetails />}>

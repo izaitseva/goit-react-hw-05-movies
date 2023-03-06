@@ -7,7 +7,7 @@ export const HeaderNav = ({ isDesktop = true }) => {
     return (
         <nav>
             <header className="HeaderNav">
-                <NavLink to={paths.home}>
+                <NavLink to={paths.main}>
                     Home
                 </NavLink>
                 <NavLink to={paths.movies}>

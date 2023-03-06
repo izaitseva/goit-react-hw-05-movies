@@ -7,7 +7,6 @@ import MovieList from "components/components/MovieList";
 export default function Movies() {
 
     const [movieSearch, setMovieSearch] = useSearchParams({ query: "" });
-    // const [searchResults, setSearchResults] = useState([]);
     const [query, setQuery] = useState("");
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
