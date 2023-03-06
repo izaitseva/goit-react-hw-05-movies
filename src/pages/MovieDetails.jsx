@@ -10,7 +10,7 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState(null);
 
     const [loading, setLoading] = useState(false);
-    
+
     const [error, setError] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -23,28 +23,18 @@ const MovieDetails = () => {
         const getMovie = async () => {
             try {
                 setLoading(true);
-                const {data} = await getMovieById(movieId);
+                const { data } = await getMovieById(movieId);
                 setMovie(data);
             } catch {
                 setError(true);
             } finally {
                 setLoading(false);
             }
-            
+
 
         };
         getMovie();
     }, [movieId]);
-
-    if (loading) {
-        return <>Loading...</>;
-    }
-
-    if (error) {
-        return <div>There was an error. Please return
-            <Link to={paths.home}>HOME</Link>
-        </div>
-    }
 
     const date = ` (${movie?.release_date.split('-')[0]})`;
     const vote = movie?.vote_average.toFixed(1);
@@ -52,7 +42,8 @@ const MovieDetails = () => {
 
     return (
         <div>
-
+            {error && <h2>There's nothing to see here</h2>}
+            {loading && <h2>Please wait...</h2>}
             <button onClick={handleClick}>Go back</button>
             <div>
                 {movie?.poster_path
@@ -70,8 +61,8 @@ const MovieDetails = () => {
             <div>
                 <p>Additional information</p>
                 <div>
-                    <Link to={paths.cast} state={{from: linkBack}}>Cast</Link>
-                    <Link to={paths.reviews} state={{from: linkBack}}>Reviews</Link>
+                    <Link to={paths.cast} state={{ from: linkBack }}>Cast</Link>
+                    <Link to={paths.reviews} state={{ from: linkBack }}>Reviews</Link>
                 </div>
             </div>
             <Suspense fallback={<p>Loading Page</p>}>
