@@ -4,38 +4,43 @@ import { useParams } from "react-router-dom";
 
 const Reviews = () => {
 
-    const params = useParams();
-    const { movieId } = params;
+    const { movieId } = useParams();
     const [review, setReview] = useState([]);
-    const [status, setStatus] = useState('idle');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
 
-        getMovieReviews(movieId)
-            .then(({ data: { results } }) => {
+        const fetchMovieReviews = async () => {
+            try {
+                setLoading(true);
+                const { data: { results } } = await getMovieReviews(movieId)
                 setReview(results)
-            })
-            .catch(() => {
-                setStatus('error')
-            })
+            } catch {
+                setError(true);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchMovieReviews();
     }, [movieId]);
 
-    if (status === 'error' || review.length === 0) {
-        return <p>There are no reviews.</p>
-    }
-
     return (
-        <ul>
-            {
-                review?.map(x => (
-                    <li key={x.id}>
-                        <h4>Author: {x?.author_details.username} </h4>
-                        <p>{x?.content}</p>
-                    </li>
+        <div>
+            {error && <p>There are no reviews...</p>}
+            {loading && <p>Please wait...</p>}
+            <ul>
+                {
+                    review?.map(review => (
+                        <li key={review.id}>
+                            <h4>Author: {review?.author_details.username} </h4>
+                            <p>{review?.content}</p>
+                        </li>
 
-                ))
-            }
-        </ul>
+                    ))
+                }
+            </ul>
+        </div>
     )
 
 }
