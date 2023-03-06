@@ -1,5 +1,5 @@
 import { paths } from "components/paths/paths";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { generatePath, Link, useLocation } from "react-router-dom";
 
 const MovieList = ({ movies }) => {
@@ -19,14 +19,14 @@ const MovieList = ({ movies }) => {
     )
 }
 
-// MovieList.propTypes = {
-//     movies: PropTypes.arrayOf(
-//         PropTypes.shape({
-//             id: PropTypes.number.isRequired,
-//             title: PropTypes.string,
-//             original_title: PropTypes.string,
-//         })
-//     ).isRequired,
-// };
+MovieList.propTypes = {
+    movies: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string,
+            original_title: PropTypes.string,
+        })
+    ).isRequired,
+};
 
 export default MovieList;
