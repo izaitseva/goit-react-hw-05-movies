@@ -15,7 +15,7 @@ export const fetchTopRatedMovies = () => {
     return axios.get(`${TOP_RATED_URL}?api_key=${KEY}`)
 }
 
-export const fetchMovieById = (movieId) => {
+export const getMovieById = (movieId) => {
     return axios.get(`${URL}/movie/${movieId}?api_key=${KEY}`)
 }
 
